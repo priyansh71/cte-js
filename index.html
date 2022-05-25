@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Advanced JavaScript</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/night.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Abel&family=IBM+Plex+Mono:wght@300&family=Nunito:wght@200&family=Quicksand:wght@300&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<style>
+		header {
+			font-family: "IBM Plex Mono", monospace;
+			font-size: 5rem;
+		}
+
+		p {
+			font-family: "Abel";
+			text-align: left;
+		}
+
+		div {
+			font-family: "Nunito";
+		}
+
+		article {
+			font-family: "Quicksand";
+			font-size: 3rem;
+			margin: 2rem;
+		}
+
+		li {
+			font-family: "Nunito";
+			font-size: 2rem;
+			margin: 1rem;
+		}
+	</style>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h2>Advanced JavaScript and the ES6</h2>
+				<p style="text-align: right;">: Priyansh Vyas</p>
+			</section>
+
+			<section>
+				<h3>Goals going ahead</h3>
+				<ul>
+					<li class="fragment">Functions in JavaScript</li>
+					<li class="fragment">What is ES6?</li>
+					<li class="fragment">ES6 features</li>
+					<ul class="fragment">
+						<li>Arrow functions</li>
+						<li>Destructuring arrays and objects</li>
+						<li>Template Strings</li>
+						<li>Higher order Array Methods</li>
+						<li>JavaScript modules</li>
+					</ul>
+
+					<li class="fragment">What are promises?</li>
+				</ul>
+			</section>
+			<section>
+				<h2 style="margin: 0.2em">Functions</h2>
+
+			</section>
+
+			<section>
+				<img src="img/Functions.png" width="600px" />
+			</section>
+
+
+			<section>
+				<h6>
+					Parameter and return types are not written in the function declaration.
+				</h6>
+				<ul>
+					<li class="fragment">A function can return anything it wants</li>
+					<li class="fragment">if a function returns nothing, it returns <code>undefined</code> </li>
+
+				</ul>
+			</section>
+
+
+			<section>
+				<h2>ES6</h2>
+				<p class="fragment">ECMAScript is the scripting language that forms the basis of JavaScript.</p>
+				<p class="fragment">ECMAScript standards set in 2015 are collectively called as ES6.</p>
+				<p class="fragment">ECMA stands for European Computer Manufacturers Association.</p>
+			</section>
+
+			<section>
+				<h3 style="margin: 0.2em">Arrow Functions</h3>
+				<img src="img/arrow.png" width="850px" />
+			</section>
+
+			<section>
+				<h3 style="margin: 0.2em">Destructuring</h3>
+				<img src="img/Destructuring.png" width="850px" />
+
+			</section>
+
+			<section>
+				<h3 style="margin: 0.2em">Template Strings</h3>
+				<img src="img/Strings.png" width="850px" />
+			</section>
+
+			<section>
+				<h3 style="margin: 0.2em">Higher Order Array Methods</h3>
+			</section>
+
+			<section>
+				<h3>Modules</h3>
+				<p>JavaScript programs started off pretty small — most of its usage in the early days was to do isolated
+					scripting tasks, providing a bit of interactivity to your web pages where needed, so large scripts
+					were generally not needed. Fast forward a few years and we now have complete applications being run
+					in browsers with a lot of JavaScript code. Be it for frontend or backend.
+
+					It has therefore made sense in recent years to start thinking about providing mechanisms for
+					splitting JavaScript programs up into separate modules that can be imported when needed.</p>
+			</section>
+
+			<section>
+				<h4>Examples</h4>
+				<code>import { name, age } from "./person.js";</code>
+				<br />
+				<code>import message from "./message.js";</code>
+			</section>
+
+			<section>
+				<h3 style="margin: 0.2em">Promises</h3>
+				<p>
+					JavaScript is single threaded, meaning that two bits of script cannot run at the same time; they
+					have to run one after another. In browsers, JavaScript shares a thread with a load of other stuff
+					that differs from browser to browser. But typically JavaScript is in the same queue as painting the
+					Document Object Model, updating styles, and handling user actions. One thing happening delays the
+					other.
+				</p>
+			</section>
+
+			<section>
+				<p>As a human being, you're multithreaded. You can keep an eye on it Google Meet in your phone , watch
+					Valorant videos on your laptop, listen to Spotify, all while eating Nutella. The only blocking
+					function we have to deal with is sneezing, where all current activity must be suspended for the
+					duration of the sneeze.</p>
+			</section>
+
+			<section>
+				<h5>Now let's bring this closer to development.</h5>
+				<br />
+				<p>Let's say you want to display an image on your webpage and Depending on whether that event has been
+					loaded or not you want to perform some tasks.</p>
+			</section>
+
+			<section>
+				<p>This can be achieved by :</p>
+				<img src="img/events.png" width="700px" />
+			</section>
+
+			<section>
+				<p>It's possible that the events happened before we started listening for them, so we need to work
+					around that using the "complete" property of images.</p>
+				<img src="img/events2.png" class="fragment" width="500px">
+			</section>
+
+			<section>
+				<h4>Issue?</h4>
+				<p>
+					This doesn't catch images that errored before we got a chance to listen for them; unfortunately the
+					DOM doesn't give us a way to do that.
+				</p>
+				<p>
+					Also, this is loading one image. Things get even more complex if we want to know when a set of
+					images have to be loaded.
+				</p>
+			</section>
+
+			<section>
+				<h4>Ideal Solution?</h4>
+				<img class="fragment" src="img/events3.png" width="700px" />
+			</section>
+
+			<section>
+				<h4>Implementation in Real Life?</h4>
+				<p class="fragment">This is solved by a ES6 feature known as a <code>Promise</code>.</p>
+				<p class="fragment">
+					At their most basic, promises are a bit like event listeners except : </p>
+				<ul class="fragment">
+					<li>A promise can only succeed or fail once. It cannot succeed or fail twice, neither can it switch
+						from success to failure or vice versa.
+					</li>
+					<li>
+						If a promise has succeeded or failed and you later add a success/failure callback, the correct
+						callback will be called, even though the event took place earlier.
+					</li>
+				</ul>
+
+				</p>
+			</section>
+
+			<section>
+
+				<p>A promise can be:</p>
+				<ul>
+					<li class="fragment">Fulfilled : The action relating to the promise succeeded.</li>
+					<li class="fragment">Rejected : The action relating to the promise got rejected.</li>
+					<li class="fragment">Pending : Hasn't fulfilled or rejected yet.</li>
+				</ul>
+
+			</section>
+
+			<section>
+				<h4>Syntax</h4>
+				<img src="img/promise.png" width="700px" alt="">
+			</section>
+
+			<section>
+				<h3>Document Object Model</h3>
+				<a href="https://www.w3schools.com/js/pic_htmltree.gif" class="fragment" target="_blank">Visualize</a>
+				<p>The Document Object Model is a programming interface for web documents. It
+					represents the page so that programs can change the document structure, style, and content. The DOM
+					represents the document as nodes and objects; that way, programming languages can interact with the
+					page. </p>
+				<p> DOM can be modified with a scripting language such as JavaScript.</p>
+			</section>
+
+			<section>
+				<p>With the object model, JavaScript gets all the power it needs to create dynamic HTML.</p>
+				<ul>
+					<li>can change all the HTML elements in the page</li>
+					<li>can change the CSS style of all the elements in the page</li>
+					<li>can change the content of all the elements in the page</li>
+
+
+					<li> can remove existing HTML elements and attributes</li>
+					<li>can create new events in the page
+
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
