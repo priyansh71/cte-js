@@ -54,8 +54,9 @@
 					<li class="fragment">What is ES6?</li>
 					<li class="fragment">ES6 features</li>
 					<li class="fragment">Events in JavaScript</li>
-					<li class="fragment">What are promises?</li>
 					<li class="fragment">Document Object Model</li>
+					<li class="fragment">DOM Manipulation</li>
+					<li class="fragment">What are promises?</li>
 				</ul>
 			</section>
 			<section>
@@ -159,10 +160,23 @@
 			</section>
 
 			<section>
+				<h4>NPM</h4>
+				<p>
+					npm (originally short for Node Package Manager) is a package manager for the JavaScript programming language maintained by npm, Inc.
+					<br>
+					npm is the default package manager for the JavaScript runtime environment Node.js. It consists of a command line client, also called npm, and an online database of public and paid-for private packages, called the npm registry accessible at <a href="https://npmjs.com">npm</a>.
+				</p>
+			</section>
 
-				<h4>Examples</h4>
+			<section>
+
+				<h3>ES6 method</h3>
+				<strong>Make sure to use <code>type="module"</code> or <code>"type":"module"</code> in your nearest
+					config destination.</strong>
 				<ul>
 					<li>Importing packages from <a href="https://npmjs.org">npm</a>
+						<br>
+						<code>import isOdd from "is-odd";</code>
 					</li>
 					<li>
 						Import named exports from a <code>person.js</code> :
@@ -177,6 +191,26 @@
 				</ul>
 				<br>
 				<br />
+			</section>
+
+			<section>
+				<h4>ES5 method</h4>
+				<ul>
+					<li>Importing packages from <a href="https://npmjs.org">npm</a>
+						<br>
+						<code>const isOdd = require("is-odd");</code>
+					</li>
+					<li>
+						Import named exports from <code>person.js</code> :
+						<br>
+						<code>const { name, age } =  require("./person.js");</code>
+					</li>
+					<li>
+						Import a default export from <code>message.js</code> :
+						<br>
+						<code>const message = require("./message.js");</code>
+					</li>
+				</ul>
 			</section>
 
 			<section>
@@ -207,11 +241,48 @@
 
 			<section>
 				<p>The recommended mechanism for adding event handlers in web pages is the
-					<code>addEventListener()</code> method:</p>
+					<code>addEventListener()</code> method:
+				</p>
 				<p>Changing the <code> background-color</code> of the <code>body</code> to a random color on button
 					click.</p>
 				<img src="img/generateRandom.png" alt="" class="fragment">
 			</section>
+
+			<section>
+				<a href="https://www.w3schools.com/jsref/dom_obj_event.asp" target="_blank">All events listed</a>
+				<p>Some popular events</p>
+				<img src="img/popularEvents.png" alt="">
+			</section>
+
+			<section>
+				<h3>Document Object Model</h3>
+				<a href="https://www.w3schools.com/js/pic_htmltree.gif" class="fragment" target="_blank">Visualize</a>
+				<p>The Document Object Model is a programming interface for web documents. It
+					represents the page so that programs can change the document structure, style, and content. The DOM
+					represents the document as nodes and objects; that way, programming languages can interact with the
+					page. </p>
+				<p> DOM can be modified with a scripting language such as JavaScript.</p>
+			</section>
+
+			<section>
+				<p>With the object model, JavaScript gets all the power it needs to create dynamic HTML.</p>
+				<ul>
+					<li>can change all the HTML elements in the page</li>
+					<li>can change the CSS style of all the elements in the page</li>
+					<li>can change the content of all the elements in the page</li>
+
+
+					<li> can remove existing HTML elements and attributes</li>
+					<li>can create new events in the page
+
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3> DOM Manipulation</h3>
+			</section>
+			
 			<section>
 				<h3 style="margin: 0.2em">Promises</h3>
 				<p>
@@ -302,30 +373,7 @@
 				<img src="img/promise.png" width="700px" alt="">
 			</section>
 
-			<section>
-				<h3>Document Object Model</h3>
-				<a href="https://www.w3schools.com/js/pic_htmltree.gif" class="fragment" target="_blank">Visualize</a>
-				<p>The Document Object Model is a programming interface for web documents. It
-					represents the page so that programs can change the document structure, style, and content. The DOM
-					represents the document as nodes and objects; that way, programming languages can interact with the
-					page. </p>
-				<p> DOM can be modified with a scripting language such as JavaScript.</p>
-			</section>
-
-			<section>
-				<p>With the object model, JavaScript gets all the power it needs to create dynamic HTML.</p>
-				<ul>
-					<li>can change all the HTML elements in the page</li>
-					<li>can change the CSS style of all the elements in the page</li>
-					<li>can change the content of all the elements in the page</li>
-
-
-					<li> can remove existing HTML elements and attributes</li>
-					<li>can create new events in the page
-
-					</li>
-				</ul>
-			</section>
+			
 		</div>
 	</div>
 
@@ -334,9 +382,27 @@
 	<script src="plugin/markdown/markdown.js"></script>
 	<script src="plugin/highlight/highlight.js"></script>
 	<script>
+
 		Reveal.initialize({
+			transition: 'concave',
+			transitionSpeed: 'slow',
 			hash: true,
+			progress: true,
 			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+
+		(new MutationObserver(function (mutations, observer) {
+			mutations.reduce(function (accumulator, current) {
+				return accumulator.concat(Array.prototype.slice.call(
+					current.addedNodes));
+			}, []).forEach(function (el) {
+				if (/video/i.test(el.tagName)) {
+					el.controls = true;
+				}
+			});
+		})).observe(document.body, {
+			childList: true,
+			subtree: true
 		});
 	</script>
 </body>
